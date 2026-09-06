@@ -137,6 +137,7 @@ export async function fetchSpa(id) {
     cover: resolveImageUrl((b.images && b.images[0]?.url) || ''),
     images: dedupeByUrl(resolveImageUrls((b.images || []).map((img) => img.url))), // Gallery.vue muốn mảng URL thuần
     imageList: (b.images || []).map((img) => ({ id: img.id, url: resolveImageUrl(img.url) })), // shape admin cũ cần id để xoá
+    videos: (b.videos || []).map((v) => ({ id: v.id, url: resolveImageUrl(v.url) })),
     info: infoObj,
     bio: b.shortDescription,
     rates: (b.rates || []).map((r) => ({ duration: r.timeLabel, price: r.studioPrice })),

@@ -61,6 +61,13 @@ onMounted(load)
           <p class="bio">{{ item.bio }}</p>
         </div>
 
+        <div class="videos card" v-if="item.videos && item.videos.length">
+          <h3>Videos</h3>
+          <div class="video-list">
+            <video v-for="v in item.videos" :key="v.id" :src="v.url" controls preload="metadata"></video>
+          </div>
+        </div>
+
         <div class="reviews card">
           <h3>Customer Reviews</h3>
           <div v-for="r in item.reviews" :key="r.author + r.date" class="review">
@@ -142,6 +149,11 @@ onMounted(load)
 
 .bio-heading { font-size: 16px; margin-bottom: 8px; }
 .bio { font-size: 14px; line-height: 1.7; color: var(--text); }
+
+.videos { padding: 20px; }
+.videos h3 { font-size: 16px; margin-bottom: 14px; }
+.video-list { display: flex; flex-direction: column; gap: 12px; }
+.video-list video { width: 100%; border-radius: 10px; background: #000; }
 
 .reviews { padding: 20px; }
 .reviews h3 { font-size: 16px; margin-bottom: 14px; }
